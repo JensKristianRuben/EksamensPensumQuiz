@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz færdig</title>
+    <link rel="stylesheet" href="/quizCompleted.css">
+</head>
+<body>
+
+<div class="background-circles"></div>
+
+<h1>Quizzen er færdig</h1>
+<h3>Du fik <span th:text="${correctAnswers}"></span>/40 rigtige</h3>
+
+<div class="music-bars">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+
+<a href="/">Tag quizzen igen</a>
+
+</body>
+</html>

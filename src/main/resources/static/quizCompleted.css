@@ -1,0 +1,140 @@
+/* Baggrundsanimerede cirkler */
+.background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-circles::before,
+.background-circles::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+}
+
+.background-circles::before {
+    top: 10%;
+    left: 20%;
+    animation-duration: 7s;
+}
+
+.background-circles::after {
+    top: 70%;
+    left: 60%;
+    animation-duration: 5s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.1);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}
+
+
+.music-bars {
+    display: flex;
+    gap: 5px;
+    margin: 20px 0;
+    height: 100px;
+}
+
+.bar {
+    width: 10px;
+    background: white;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+.bar:nth-child(1) { animation-delay: 0s; }
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.3s; }
+.bar:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    0%, 100% {
+        height: 20px;
+    }
+    50% {
+        height: 80px;
+    }
+}
+
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #9f7d51, #613f14, #452a0b, #9f7d51);
+    background-size: 400% 400%;
+    animation: backgroundWave 10s ease infinite;
+    font-family: "Source Code Pro", serif;
+    overflow: hidden;
+}
+
+@keyframes backgroundWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    font-size: 50px;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+h3 {
+    font-size: 30px;
+    color: white;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+a {
+    display: flex;
+    font-family: "Source Code Pro", serif;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #9f7d51;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 20px;
+    height: 100px;
+    width: 200px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    animation: pulse 3s infinite;
+}
+
+a:hover {
+    background-color: #613f14;
+    transform: scale(1.1);
+}

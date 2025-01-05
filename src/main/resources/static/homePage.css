@@ -1,0 +1,85 @@
+/* Baggrundsanimation */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Source Code Pro', sans-serif;
+    background: linear-gradient(270deg, #613f14, #452a0b, #9f7d51, #613f14);
+    background-size: 400% 400%;
+    animation: backgroundWave 8s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes backgroundWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Baggrunds-cirkler */
+.background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background-circles::before,
+.background-circles::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s infinite ease-in-out;
+}
+
+.background-circles::before {
+    top: 20%;
+    left: 10%;
+    animation-duration: 8s;
+}
+
+.background-circles::after {
+    bottom: 10%;
+    right: 15%;
+    animation-duration: 5s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+    100% { transform: translateY(0px) scale(1); }
+}
+
+/* Knappen */
+form button {
+    font-family: 'Anton', sans-serif;
+    font-size: 30px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background-color: #452a0b;
+    cursor: pointer;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+form button:hover {
+    background-color: #9f7d51;
+    transform: scale(1.1);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}

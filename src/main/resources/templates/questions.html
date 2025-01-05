@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spørgsmål</title>
+    <link rel="stylesheet" href="/questions.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="background-circles"></div>
+
+<div class="question-counter">
+    <span th:text="${questionIndex + 1}"></span>/<span th:text="${totalQuestions}"></span>
+</div>
+
+<form th:action="@{/submitAnswer}" method="post">
+    <div class="question">
+        <h3 th:text="${question.getQuestionText()}">Spørgsmålet står her</h3>
+    </div>
+    <div class="options">
+        <div class="answer-box" th:each="option, index : ${question.options}">
+            <input type="radio"
+                   name="answer"
+                   th:value="${option}"
+                   th:id="'answer' + ${index}"
+                   th:checked="${option == selectedAnswer}"
+                   required>
+            <label th:for="'answer' + ${index}" th:text="${option}">Option 1</label>
+        </div>
+        <!-- Skjult input for questionIndex -->
+        <input type="hidden" name="questionIndex" th:value="${questionIndex}"/>
+    </div>
+    <div class="button">
+        <button type="submit">
+            <span>NÆSTE</span>
+        </button>
+    </div>
+</form>
+
+<script>
+    // Interaktivt fokus på svarmuligheder
+    const answerBoxes = document.querySelectorAll('.answer-box');
+    answerBoxes.forEach(box => {
+        box.addEventListener('click', function () {
+            answerBoxes.forEach(otherBox => {
+                otherBox.classList.remove('focused');
+            });
+            this.classList.add('focused');
+            const radioButton = this.querySelector('input[type="radio"]');
+            radioButton.checked = true;
+        });
+    });
+</script>
+</body>
+</html>
